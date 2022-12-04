@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connect 4 Object Oriented</title>
+    <link href="connect4.css" rel="stylesheet" />
+  </head>
+  <body>
+    <table align="center">
+      <tr>
+        <td>
+          <div>
+            <img src="images/springboard.png" width="180" alt="Springboard" />
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><h2>Connect 4 Game optimze in Object Orented !</h2></td>
+      </tr>
+    </table>
+    <div  id="divPlayersEntries">
+    <form id="from_submit" action="#">
+      <table align="center" style="width: 600px;border: #ccc solid 1px;border-radius: 10px;background-color: rgb(235, 232, 232);">
+        <tr>
+          <td>
+              <table align="center" style="width: 100%">
+                <tr><td colspan="3">
+                  <span style="font-size:20px;" for="">Type the name of the color or hex color in the fields!</span>
+                </td></tr>
+                <tr><td colspan="3">
+                  <span style="font-size:20px;color: brown;" for="">Ex: #AA33FF, #ffcc66, Red.
+                    Pink,
+                    Orange,
+                    Yellow,
+                    Purple,
+                    Green,
+                    Blue,
+                    Cyan,
+                    Brown,
+                    burlywood.</span>
+                </td></tr>
+                <tr><td colspan="3">
+                  <span style="font-size:20px;color: red;" for="">Black and white colors are volontary removed from the colors to avoid confusion in the grid!</span>
+                </td></tr>
+                <tr>
+                  <td><input id="player-1" required type="text" placeholder="Color player one" /></td>
+                  <td><input id="player-2" required type="text" placeholder="Color player two" /></td>
+                  <td>
+                    <input
+                      style="cursor: pointer; padding: 9px"
+                      type="submit"
+                      value=" Start game ! "
+                    />
+                  </td>
+                </tr>
+              </table>
+          </td>
+        </tr>
+      </table>
+    </form>
+    </div>
+    <div class="hidden" id="game">
+      <table id="board"></table>
+      <table align="center">
+        <tr>
+          <td><div id="divLegendPlayer1" ></div></td>
+          <td><label>Player One</label></td>
+        </tr>
+        <tr>
+          <td><div id="divLegendPlayer2"></div></td>
+          <td><label>Player Two</label></td>
+        </tr>
+      </table>
+      <table align="center">
+        <tr>
+          <td>
+            <h2><div id="divMessage"></div></h2>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input
+              id="resetBtn"
+              class="hidden"
+              style="cursor: pointer; padding: 10px"
+              type="button"
+              value=" Reset game ! "
+            />
+          </td>
+        </tr>
+      </table>
+    </div>
+    <di>
+
+    </di>
+    <script src="connect4.js"></script>
+  </body>
+</html>
