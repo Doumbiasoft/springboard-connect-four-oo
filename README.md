@@ -1,99 +1,55 @@
-# Springboard connect four game
+# Springboard connect four game Object Oriented
 
-Live at https://doumbiasoft.github.io/springboard-connect-four/
+Live at https://doumbiasoft.github.io/springboard-connect-four-oo/
+
+![alt image](https://github.com/doumbiasoft/springboard-connect-four-oo/blob/main/images/connect_four_game_oo_2.png)
+
+![alt image](https://github.com/doumbiasoft/springboard-connect-four-oo/blob/main/images/connect_four_game_oo.png)
 
 
-![alt image](https://github.com/doumbiasoft/springboard-connect-four/blob/main/images/connect_four_game.png)
+In this exercise, you’ll turn a non-OO-designed version of the game Connect Four into a more featureful, OO version.
 
+## Part One: Make Game Into a Class
 
-In this exercise, you plan & help code a Connect Four game in Javascript.
+Right now, our Connect Four is a bunch of disconnected functions and a few global variables.
 
-**The Game**
+This can make it hard to see how things work, and would make it hard to restart a game (quick—which variables would you have to reset to start a game?)
 
-Connect Four is played on a grid, 7 wide by 6 deep, with two players, 1 (red) and 2 (blue). The players alternate turns, dropping a piece of their color in the top of a column. The piece will fall down to the further-down unoccupied slot.
+Let’s move this to being a class.
 
-The game is won when a player makes four in a row (horizontally, vertically, or diagonally). The game is a tie if the entire board fills up without a winner.
+Initially, we’ll start with one class, Game. The players will still just be numbers for player #1 and #2.
 
-You can try out the game online.
-
-## Step One: Planning
-
-Before looking at our code, take a few minutes to think about how you would build a game like this using HTML/JS/CSS:
-
-what HTML would be useful for the game board itself?
-how could you represent a played-piece in the HTML board?
-in the JavaScript, what would be a good structure for the in-memory game board?
-what might the flow of the game be?
-Then, write down some functions names/descriptions that would be useful for this game.
-
-## Step Two: ES2015
-
-This code would benefit from updating to ES2015 style — there are lots of place where var is used that could be changed to either let or const to improve readability. Are there other style fixes you can make?
-
-## Step Three: makeBoard
-
-The **makeBoard()** function needs to be implemented. It should set the global board variable to be an array of 6 arrays (height), each containing 7 items (width).
-
-You could do this like:
+What are the instance variables you’ll need on the Game?
+for example: height, width, and the board will move from global variables to instance attributes on the class. What else should move?
+Make a constructor that sets default values for these
+Move the current functions onto the class as methods
+This will require mildly rewriting some of these to change how you access variables and call other methods
+You should end up with all of the code being in the Game class, with the only other code being a single line at the bottom:
 
 ```JavaScript
 
-const board = [
-  [ null, null, null, null, null, null, null ],
-  [ null, null, null, null, null, null, null ],
-  [ null, null, null, null, null, null, null ],
-  [ null, null, null, null, null, null, null ],
-  [ null, null, null, null, null, null, null ],
-  [ null, null, null, null, null, null, null ],
-];
+new Game(6, 7);   // assuming constructor takes height, width
 
 ```
 
-However, it’s far better to make the game flexible about the height and width of the board and use the WIDTH and HEIGHT constants in connect4.js. Implement this function to make this board dynamically.
+## Part Three: Make Player a Class
 
-## Step Four: makeHTMLBoard
+Right now, the players are just numbers, and we have hard-coded player numbers and colors in the CSS.
 
-This function is missing the first line, that sets the board variable to the HTML board DOM node. Fix this.
+Make it so that there is a Player class. It should have a constructor that takes a string color name (eg, “orange” or “#ff3366”) and store that on the player instance.
 
-Add comments to the code that dynamically creates the HTML table.
+The Game should keep track of the current player object, not the current player number.
 
-## Step Five: placeInTable & Piece CSS
+Update the code so that the player pieces are the right color for them, rather than being hardcoded in CSS as red or blue.
 
-This function should add a div inside the correct td cell in the HTML game board. This div should have the piece class on it, and should have a class for whether the current player is 1 or 2, like p1 or p2.
+Add a small form to the HTML that lets you enter the colors for the players, so that when you start a new game, it uses these player colors.
 
-Update the CSS file to:
+## Further Study
 
-make the piece div round, not square
-be different colors depending on whether it’s a player #1 or #2 piece
-While not everything will work, you should now be able to click on a column and see a piece appear at the very bottom of that column. (They won’t yet appear in the right row and will always be player #1 pieces)
+If you have more time and would like more tasks, here are some things to play with:
 
-## Step Six: handleClick
-
-There are several pieces to write/fix here:
-
-this never updates the board variable with the player #. Fix.
-add a check for “is the entire board filled” [hint: the JS every method on arrays would be especially nice here!]
-add code to switch currPlayer between 1 and 2. This would be a great place for a ternary function.
-
-## Step Seven: findSpotForCol and endGame
-
-Right now, the game drops always drops a piece to the top of the column, even if a piece is already there. Fix this function so that it finds the lowest empty spot in the game board and returns the y coordinate (or null if the column is filled).
-
-Once you have this working, make sure that when a game has ended, the endGame function runs and alerts which user has won!
-
-## Step Eight: CELEBRATE!
-
-If you got this far, you should have a fully functional Connect Four game. Congratulations!
-
-**Further Study**
-
-## Optional Step Nine: Read & Comment checkForWin
-
-The checkForWin() function is already written, but it needs comments to help explain how it works. Add some!
-
-**Note:** this is a good strategy for finding a winner, but it’s not the most efficient. Later, you may learn ways to find winners that don’t keep re-checking the same area of the board [using techniques for “dynamic programming”, you can make this code more efficient, though it’s much more advanced than the rest of this exercise. You can come back to this code much later!]
-
-## Optional Step Ten: Add Animation!
-
-You can learn about CSS animation features (check out MDN!). If you change the .piece divs to be positioned absolutely, you can animate the top CSS property to animate the pieces so they appear to drop down. This is tricky, but will give you a chance to play with animations, as well as working with relative/absolute positioning.
-
+Make it so that you can have more than two players
+The look-and-feel is very sparse: add animations, better graphics for the board or pieces, and other CSS ideas. You could even use bootstrap for things like modals for the start-new-game form.
+Make a very simple computer player: it could pick a random column and place a piece there. Can you do this in an object-oriented way, so there is a ComputerPlayer class?
+Want something ambitious? Try to build another game using OOP! Here are some ideas to get you started:
+Checkers
