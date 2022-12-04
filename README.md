@@ -2,8 +2,9 @@
 
 Live at https://doumbiasoft.github.io/springboard-connect-four/
 
+![alt image](https://github.com/doumbiasoft/springboard-connect-four-oo/blob/main/images/connect_four_game_oo_2.png)
 
-![alt image](https://github.com/doumbiasoft/springboard-connect-four/blob/main/images/connect_four_game.png)
+![alt image](https://github.com/doumbiasoft/springboard-connect-four-oo/blob/main/images/connect_four_game_oo.png)
 
 
 In this exercise, you plan & help code a Connect Four game in Javascript.
